@@ -10,9 +10,9 @@ $tel = $_POST["tel"];
 $total = $_POST["total"];
 
 $sql = "INSERT INTO `order_header`(`user_id`, `order_name`, `order_address`, `order_email`, 
-`order_tel`, `order_total`, `order_status`, `track_number`) 
+`order_tel`, `order_total`, `order_status`, `track_number`,`order_date`) 
 VALUES ('$user_id','$name','$address','$email',
-'$tel','$total','1','')"; //2. คำสั่ง SQL เพื่อเพิ่มข้อมูลรายละเอียดการจัดส่งไปยังฐานข้อมูล
+'$tel','$total','1','',now())"; //2. คำสั่ง SQL เพื่อเพิ่มข้อมูลรายละเอียดการจัดส่งไปยังฐานข้อมูล
 
 if ($conn->query($sql) === true) { //3.รันคำสั่ง sql
     echo "New record created successfully";

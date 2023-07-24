@@ -27,9 +27,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+
 </head>
-<?php 
+<?php
 header("Content-Type: text/html;charset=UTF-8");
 session_start();
 
@@ -90,7 +90,7 @@ if ($result->num_rows > 0) {
                                 <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                             </div>
                             <div class="info">
-                                <a href="#" class="d-block"><?php echo $row['firstname'] . " " . $row['lastname']?></a>
+                                <a href="#" class="d-block"><?php echo $row['firstname'] . " " . $row['lastname'] ?></a>
                             </div>
                         </div>
 
@@ -138,6 +138,14 @@ if ($result->num_rows > 0) {
                                             <a href="manage_admin.php" class="nav-link">
                                                 <i class="far fa-user-circle nav-icon"></i>
                                                 <p>จัดการข้อมูลผู้ใช้งาน</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="report.php" class="nav-link">
+                                                <i class="far fa-file-alt nav-icon"></i>
+                                                <p>รายงาน</p>
                                             </a>
                                         </li>
                                     </ul>
