@@ -31,6 +31,12 @@ $sql_report7 = "SELECT * FROM `tbl_product` WHERE category != 4 and qty <= 5 ord
 $res_report7 = $conn->query($sql_report7);
 $sql_report8 = "SELECT SUM(order_total) as order_total,CAST(order_date AS DATE) as date FROM `order_header` group by CAST(order_date AS DATE)";
 $res_report8 = $conn->query($sql_report8);
+$sql_report01 = "SELECT SUM(product_qty) as product_qty FROM order_detail;";
+$res_report01 = $conn->query($sql_report01);
+$sql_report02 = "SELECT SUM(order_total) as order_total FROM order_header;";
+$res_report02 = $conn->query($sql_report02);
+$sql_report03 = "SELECT COUNT(id) as member FROM tbl_user WHERE level = 'user';";
+$res_report03 = $conn->query($sql_report03);
 
 ?>
 <style type="text/css">
@@ -59,7 +65,64 @@ $res_report8 = $conn->query($sql_report8);
             <div class="row">
                 <h4 class="mr-4 mt-4">รายงาน </h4>
             </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
+                        <div class="info-box-content">
+                            <span class="info-box-text">จำนวนที่ขายได้</span>
+                            <?php if ($res_report01->num_rows > 0) {
+                                while ($row = $res_report01->fetch_assoc()) {
+                                    echo "<span class='info-box-number'>{$row['product_qty']}</span>";
+                                }
+                            } ?>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">ยอดขาย</span>
+                            <?php if ($res_report02->num_rows > 0) {
+                                while ($row = $res_report02->fetch_assoc()) {
+                                    echo "<span class='info-box-number'>{$row['order_total']}</span>";
+                                }
+                            } ?>
+                            
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">จำนวนสมาชิก</span>
+                            <?php if ($res_report03->num_rows > 0) {
+                                while ($row = $res_report03->fetch_assoc()) {
+                                    echo "<span class='info-box-number'>{$row['member']}</span>";
+                                }
+                            } ?>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+            </div>
             <div class="row">
                 <div class="col-6" style="overflow-x:auto">
                     <h4 class="mr-4 mt-4">รายงานสินค้าตามประเภท</h4>
