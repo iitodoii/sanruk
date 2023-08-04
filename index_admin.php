@@ -35,6 +35,7 @@ $result = $conn->query($sql);
             <!-- thead = table header ส่วนหัวของตาราง--> 
             <thead class="bg-warning"> 
               <th>รหัสออเดอร์</th>
+              <th class="d-none">ภาพสลิป</th>
               <th>ชื่อผู้สั่งซื้อ</th>
               <th>ที่อยู่ในการจัดส่ง</th>
               <th>อีเมล์</th>
@@ -53,6 +54,7 @@ $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
                   echo "<tr>";
                   echo "<td> {$row['id']} </td>"; //รหัสออเดอร์
+                  echo "<td class='d-none'> {$row['slip_img']} </td>"; //รหัสออเดอร์
                   echo "<td> {$row['order_name']} </td>"; //ชื่อออเดอร์ ชื่อผู้รับสินค้า
                   echo "<td> {$row['order_address']} </td>"; //ที่อยู่จัดส่งพัสดุ
                   echo "<td> {$row['order_email']} </td>";//อีเมลล์ของลูกค้า
@@ -108,7 +110,7 @@ $result = $conn->query($sql);
               สลิปยืนยัน
           </div>
           <div class="col-12">
-            <img class="rounded-lg" style="width:100%;height:auto;padding:10px 50px 10px 50px" src="dist/img/slip/SL0005/SL0005.jpg"/>
+            <img id="slip_img" class="rounded-lg" style="width:100%;height:auto;padding:10px 50px 10px 50px" src=""/>
           </div>
         </div>
         <div class="row">
@@ -148,8 +150,10 @@ $result = $conn->query($sql);
         let api = this.api();
         api.$('td #update').click(function() {
           let order_id = api.row($(this).parent().parent()).data()[0];
+          let slip_img = api.row($(this).parent().parent()).data()[1];
           console.log(order_id);
           $('#order_id').val(order_id);
+          $('#slip_img').attr("src", slip_img);
           $('#updateModal').show();
         });
       }

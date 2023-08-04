@@ -74,24 +74,51 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4 d-flex justify-content-center">
+                    <div class="row mt-4">
                         <div class="col-6">
-                            <div class="form-group">
-                                <label for="material">วัสดุ</label>
-                                <?php
-                                $sql_material = "SELECT * FROM tbl_m_material";
-                                $result_material = $conn->query($sql_material);
-                                echo "<select name='material' id='material' class='form-control'>";
-                                if ($result_material->num_rows > 0) {
-                                    while ($row = $result_material->fetch_assoc()) {
-                                        echo "<option value='" . $row['id'] . "'>" . $row['name'] . " (" . $row['price'] . "฿) </option>";
-                                    }
-                                }
-                                echo "</select>";
-                                ?>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="material">วัสดุ</label>
+                                        <?php
+                                        $sql_material = "SELECT * FROM tbl_m_material";
+                                        $result_material = $conn->query($sql_material);
+                                        echo "<select name='material' id='material' class='form-control'>";
+                                        if ($result_material->num_rows > 0) {
+                                            while ($row = $result_material->fetch_assoc()) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['name'] . " (" . $row['price'] . "฿) </option>";
+                                            }
+                                        }
+                                        echo "</select>";
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="pattern">ลายสินค้า</label><span class="text-danger">*รูปภาพตัวอย่างเฉพาะลายเท่านั้น</span>
+                                        <?php
+                                        $sql_pattern = "SELECT * FROM tbl_m_pattern";
+                                        $result_pattern = $conn->query($sql_pattern);
+                                        echo "<select name='pattern' id='pattern' class='form-control'>";
+                                        echo "<option value='' selected>กรุณาเลือกลาย</option>";
+                                        if ($result_pattern->num_rows > 0) {
+                                            while ($row = $result_pattern->fetch_assoc()) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                            }
+                                        }
+                                        echo "</select>";
+                                        ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 text-center">
+                            <input id="pattern_img" type="hidden" name="pattern_img"></input>
+                            <img id="pattern_img_show" class="rounded-lg" style="width:50%;height:auto;padding:0px 50px 0px 50px" src="" />
+                        </div>
+                        <!-- <div class="col-6">
                             <div class="form-group">
                                 <label for="img">รูปภาพสินค้า</label>
                                 <div class="input-group">
@@ -101,7 +128,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+
                     </div>
                     <div class="row mt-4 d-flex justify-content-center">
                         <div class="col-12">
@@ -283,6 +311,7 @@
     }
 
     function onchangeEvent() {
+        $('#pattern_img_show').hide();
         $('#qty').on('change', function() {
             $('#price').val(calculatePrice());
         });
@@ -305,6 +334,18 @@
             var formData = new FormData(this);
             // formData.append('faviconFile', $('#fileinput').prop('files'));
             addCustomProduct(formData);
+        });
+        $('#pattern').on('change', function() {
+            if ($("#pattern").val() != "") {
+                $('#pattern_img_show').fadeOut();
+                $('#pattern_img_show').attr("src", "dist/img/pattern/" + $("#pattern option:selected").text() + ".jpg");
+                $('#pattern_img').val("dist/img/pattern/" + $("#pattern option:selected").text() + ".jpg");
+                $('#pattern_img_show').fadeIn();
+            } else {
+                $('#pattern_img_show').attr("src", "");
+                $('#pattern_img').val("");
+                $('#pattern_img_show').fadeOut();
+            }
         });
     }
 

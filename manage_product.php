@@ -41,7 +41,7 @@ $result_category_2 = $conn->query($sql_category);
         <div class="container-fluid">
 
             <div class="row">
-                <h4 class="mr-4 mt-4">รายละเอียดออเดอร์สินค้า </h4>
+                <h4 class="mr-4 mt-4">จัดการสินค้า </h4>
             </div>
             <div class="row mb-4">
                 <!-- <div class="col-4">

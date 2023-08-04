@@ -174,7 +174,7 @@ $result_category_2 = $conn->query($sql_category);
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลสินค้า</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">แก้ไขข้อมูลผู้ใช้งาน</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -236,7 +236,7 @@ $result_category_2 = $conn->query($sql_category);
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary rounded-pill" data-dismiss="modal">ปิด</button>
-                    <button class="btn btn-primary rounded-pill" onclick="submitEditForm()"> แก้ไขสินค้า </button>
+                    <button class="btn btn-primary rounded-pill" onclick="submitEditForm()"> แก้ไขข้อมูล </button>
                 </div>
             </div>
         </div>
@@ -287,7 +287,7 @@ $result_category_2 = $conn->query($sql_category);
                             id: id
                         },
                         success: function(result) {
-                            toastr["success"]("ลบสินค้าสำเร็จ!");
+                            toastr["success"]("ลบข้อมูลสำเร็จ!");
                             setTimeout(function() {
                                 location.reload();
                             }, 1000);
@@ -297,7 +297,7 @@ $result_category_2 = $conn->query($sql_category);
                                 toast: true,
                                 position: 'top-end',
                                 icon: 'error',
-                                title: 'ลบสินค้าไม่สำเร็จ',
+                                title: 'ลบข้อมูลไม่สำเร็จ',
                                 color: '#716add',
                                 showConfirmButton: false,
                                 timer: 2000
@@ -500,7 +500,7 @@ $result_category_2 = $conn->query($sql_category);
                         shopee_url: $('#url').val()
                     },
                     success: function(result) {
-                        toastr["success"]("เพิ่มสินค้าสำเร็จ!");
+                        toastr["success"]("เพิ่มข้อมูลสำเร็จ!");
                         setTimeout(function() {
                             location.reload();
                         }, 2000);
@@ -510,7 +510,7 @@ $result_category_2 = $conn->query($sql_category);
                             toast: true,
                             position: 'top-end',
                             icon: 'error',
-                            title: 'เพิ่มสินค้าไม่สำเร็จ',
+                            title: 'เพิ่มข้อมูลไม่สำเร็จ',
                             color: '#716add',
                             showConfirmButton: false,
                             timer: 2000
@@ -523,7 +523,7 @@ $result_category_2 = $conn->query($sql_category);
                     toast: true,
                     position: 'top-end',
                     icon: 'error',
-                    title: 'เพิ่มสินค้าไม่สำเร็จ',
+                    title: 'เพิ่มข้อมูลไม่สำเร็จ',
                     color: '#716add',
                     showConfirmButton: false,
                     timer: 2000
