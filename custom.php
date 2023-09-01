@@ -26,11 +26,11 @@
                     <!-- <button class="btn btn-outline-success btn-sm h-50"> ดึงข้อมูลเดิม <i class="fas fa-copy"></i></button> -->
                 </div>
                 <form id="form-custom" role="form">
-                    <div class="row mt-4 d-flex justify-content-center">
-                        <div class="col-6">
+                    <div class="row mt-4 d-flex">
+                        <div class="col-6 d-none">
                             <div class="form-group">
                                 <label for="name">ชื่อสินค้า</label>
-                                <input type="text" name="name" class="form-control" id="name" placeholder="ชื่อสินค้า">
+                                <input type="text" name="name" class="form-control" id="name" value="สินค้าแบบกำหนดรูปแบบเอง" placeholder="ชื่อสินค้า">
                             </div>
                         </div>
                         <div class="col-6">
@@ -118,7 +118,7 @@
                             <input id="pattern_img" type="hidden" name="pattern_img"></input>
                             <img id="pattern_img_show" class="rounded-lg" style="width:50%;height:auto;padding:0px 50px 0px 50px" src="" />
                         </div>
-                        <!-- <div class="col-6">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="img">รูปภาพสินค้า</label>
                                 <div class="input-group">
@@ -128,7 +128,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
 
                     </div>
                     <div class="row mt-4 d-flex justify-content-center">

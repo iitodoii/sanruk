@@ -51,7 +51,7 @@ $result = $conn->query($sql);
                       <p><i class="fas fa-truck"></i> จัดส่งทั่วประเทศ</p>
                     </div>
                     <div class="col-12">
-                      <h5>มีสินค้าทั้งหมด <?php echo $row["qty"] . " " . $row["unit"] ?></h5>
+                      <h5>มีสินค้าทั้งหมด <?php echo "<span id='qtyCount'>" . $row["qty"] . "</span>" . $row["unit"] ?></h5>
                     </div>
                     <div class="col-9">
                       <input type="text" id="product_id" name="product_id" class="form-control w-25 d-none" value='<?php echo $row["id"] ?>'>
@@ -67,7 +67,8 @@ $result = $conn->query($sql);
                           <button class="btn btn-outline-success" type="button" onclick="increase()">+</button>
                         </div>
                       </div>
-                      <p>มีสินค้าทั้งหมด <?php //echo $row["qty"] . " " . $row["unit"] ?></p>
+                      <p>มีสินค้าทั้งหมด <?php //echo $row["qty"] . " " . $row["unit"] 
+                                          ?></p>
                     </div>
                   </div>
 
@@ -77,7 +78,7 @@ $result = $conn->query($sql);
                       ซื้อสินค้าเลย
                     </a>
                   </div> -->
-                  
+
                   <div class="mt-4">
                     <a id="add-item" class="btn btn-lg rounded-lg" style="background-color:#ff9d47">
                       <!-- <i class="background-image:url('../dist/img/Shopee-Logo-Transparent-Background.png')"></i> -->
@@ -117,40 +118,55 @@ $result = $conn->query($sql);
 <script type="text/javascript">
   $(document).ready(function() {
     //ถ้าปุ่มเพิ่มสินค้าโดนคลิก
+    // if(parseInt(('#qtyCount').text())<=0){
+    //   $('add-item').prop("disabled", true);
+    // }
     $('#add-item').click(function() {
+      var qtyCount = parseInt($("#qtyCount").text());
+      if (parseInt($('#product_qty').val()) > qtyCount) {
+        swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'error',
+          title: 'สินค้าคงเหลือไม่เพียงพอ',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      } else {
+        $.ajax({
+          url: '_addCart.php',
+          type: 'POST',
+          data: {
+            //รับค่าจากหน้าจอแล้วส่งไปยังหน้า _addCart.php
+            product_id: $('#product_id').val(),
+            product_name: $('#product_name').val(),
+            product_qty: $('#product_qty').val(),
+            product_price: $('#product_price').val(),
+            product_img: $('#product_img').val()
+          },
+          success: function(msg) {
+            swal.fire({
+              toast: true,
+              position: 'top-end',
+              icon: 'success',
+              title: 'เพิ่มสินค้าลงตระกร้าเรียบร้อย',
+              showConfirmButton: false,
+              timer: 2000
+            })
+          },
+          failure: function(msg) {
+            swal.fire({
+              toast: true,
+              position: 'top-end',
+              icon: 'error',
+              title: 'เพิ่มสินค้าไม่สำเร็จ',
+              showConfirmButton: false,
+              timer: 2000
+            })
+          }
+        });
+      }
 
-      $.ajax({
-        url: '_addCart.php',
-        type: 'POST',
-        data: {
-          //รับค่าจากหน้าจอแล้วส่งไปยังหน้า _addCart.php
-          product_id: $('#product_id').val(),
-          product_name: $('#product_name').val(),
-          product_qty: $('#product_qty').val(),
-          product_price: $('#product_price').val(),
-          product_img: $('#product_img').val()
-        },
-        success: function(msg) {
-          swal.fire({
-            toast: true,
-            position: 'top-end',
-            icon: 'success',
-            title: 'เพิ่มสินค้าลงตระกร้าเรียบร้อย',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        },
-        failure: function(msg) {
-          swal.fire({
-            toast: true,
-            position: 'top-end',
-            icon: 'error',
-            title: 'เพิ่มสินค้าไม่สำเร็จ',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        }
-      });
     });
   });
 </script>

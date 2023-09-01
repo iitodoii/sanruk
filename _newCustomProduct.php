@@ -26,28 +26,28 @@ try {
     $updateId = $arr[0]["updateId"];
 
     
-    // $path = "dist/img/custom_product/$id/";
-    // if (!file_exists($path))
-    //     mkdir($path, 0777, true);
+    $path = "dist/img/custom_product/$id/";
+    if (!file_exists($path))
+        mkdir($path, 0777, true);
 
-    // if (isset($_FILES['img'])) {
-    //     $tmp_name =  $_FILES['img']['tmp_name'];
-    //     $filename = $_FILES['img']['name'];
-    //     $temp = explode(".", $filename); //Split . and add member to array
-    //     $extention = end($temp); //get last array in this case is file extension
-    //     $newfilename = $id . '.' . $extention;
-    //     move_uploaded_file($tmp_name, $path . $newfilename);
-    // } else {
-    //     echo "Error";
-    // }
+    if (isset($_FILES['img'])) {
+        $tmp_name =  $_FILES['img']['tmp_name'];
+        $filename = $_FILES['img']['name'];
+        $temp = explode(".", $filename); //Split . and add member to array
+        $extention = end($temp); //get last array in this case is file extension
+        $newfilename = $id . '.' . $extention;
+        move_uploaded_file($tmp_name, $path . $newfilename);
+    } else {
+        echo "Error";
+    }
     
 
     $_SESSION["product_id"] = $id; //รับรหัสสินค้า
     $_SESSION["product_name"] = $name;//รับชื่อสินค้า
     $_SESSION["product_qty"] = $qty;//รับจำนวน
     $_SESSION["product_price"] = $price;
-    // $_SESSION["product_img"] = $path.$newfilename;
-    $_SESSION["product_img"] = $pattern_img;
+    $_SESSION["product_img"] = $path.$newfilename;
+    // $_SESSION["product_img"] = $pattern_img;
     
     $isSameId = false;
     
