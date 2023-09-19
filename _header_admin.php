@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link rel="icon" href="dist/img/s.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>San Ruk Shop</title>
+    <title>ระบบขายตะกร้าหวาย-บ้านหลุมข้าว</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -78,8 +78,8 @@ if ($result->num_rows > 0) {
                 <aside class="main-sidebar sidebar-dark-primary elevation-4">
                     <!-- Brand Logo -->
                     <a href="index_admin.php" class="brand-link">
-                        <img src="dist/img/s.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 bg-white" style="opacity: 1">
-                        <span class="brand-text font-weight-light">San Ruk Shop</span>
+                        <!-- <img src="dist/img/s.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 bg-white" style="opacity: 1"> -->
+                        <small class="brand-text font-weight-light">ระบบขายตะกร้าหวาย-บ้านหลุมข้าว</small>
                     </a>
 
                     <!-- Sidebar -->
@@ -141,14 +141,87 @@ if ($result->num_rows > 0) {
                                             </a>
                                         </li>
                                     </ul>
-                                    <ul class="nav nav-treeview">
+                                    <!-- <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="report.php" class="nav-link">
                                                 <i class="far fa-file-alt nav-icon"></i>
                                                 <p>รายงาน</p>
                                             </a>
                                         </li>
+                                    </ul> -->
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="report_1.php" class="nav-link">
+                                                <i class="far fa-file-alt nav-icon"></i>
+                                                <p>รายงานสินค้าตามประเภท</p>
+                                            </a>
+                                        </li>
                                     </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="report_2.php" class="nav-link">
+                                                <i class="far fa-file-alt nav-icon"></i>
+                                                <p>รายงานข้อมูลสมาชิก</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="report_3.php" class="nav-link">
+                                                <i class="far fa-file-alt nav-icon"></i>
+                                                <p>รายงานข้อมูลการสั่งซื้อ</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="report_4.php" class="nav-link">
+                                                <i class="far fa-file-alt nav-icon"></i>
+                                                <p>รายงานสถานะการชำระเงิน</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="report_4_2.php" class="nav-link">
+                                                <i class="far fa-file-alt nav-icon"></i>
+                                                <p>รายงานการจัดส่ง</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="report_5.php" class="nav-link">
+                                                <i class="far fa-file-alt nav-icon"></i>
+                                                <p>รายงานข้อมูลสินค้าขายดี 5 อันดับ</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="report_6.php" class="nav-link">
+                                                <i class="far fa-file-alt nav-icon"></i>
+                                                <p>รายงานจำนวนสินค้าคงเหลือ</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="report_7.php" class="nav-link">
+                                                <i class="far fa-file-alt nav-icon"></i>
+                                                <p>รายงานจำนวนสินค้าคงเหลือต่ำกว่า 5 หน่วย</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="report_8.php" class="nav-link">
+                                                <i class="far fa-file-alt nav-icon"></i>
+                                                <p>รายงานยอดขาย</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    
                                 </li>
                                 <li class="nav-item">
                                     <a href="_logout.php" class="nav-link">

@@ -6,7 +6,7 @@
     <link rel="icon" href="dist/img/s.png">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>San ruk</title>
+    <title>ระบบขายตะกร้าหวาย-บ้านหลุมข้าว</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -89,7 +89,7 @@ if (isset($_SESSION["user_id"])) {
             <div class="container">
                 <a href="index.php" class="navbar-brand">
                     <img src="dist/img/s.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                    <span class="brand-text text-shadow text-dark">San ruk</span>
+                    <span class="brand-text text-shadow text-dark">ระบบขายตะกร้าหวาย-บ้านหลุมข้าว</span>
                 </a>
 
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

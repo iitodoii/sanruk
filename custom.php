@@ -26,10 +26,28 @@
                     <!-- <button class="btn btn-outline-success btn-sm h-50"> ดึงข้อมูลเดิม <i class="fas fa-copy"></i></button> -->
                 </div>
                 <form id="form-custom" role="form">
+                    <div class="row mt-4 d-flex">
+                        <div class="col-6 d-none">
+                            <div class="form-group">
+<<<<<<< HEAD
+                                <label for="name">เลือกทรงตะกร้า</label>
+=======
+                                <label for="name">ชื่อสินค้า</label>
+                                <input type="text" name="name" class="form-control" id="name" value="สินค้าแบบกำหนดรูปแบบเอง" placeholder="ชื่อสินค้า">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="qty">จำนวนสินค้า</label>
+                                <input type="text" name="qty" class="form-control" id="qty" placeholder="จำนวนสินค้า">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row mt-4 d-flex justify-content-center">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="name">เลือกทรงตะกร้า</label>
+                                <label for="color">สีของตะกร้า</label>
+>>>>>>> 5dc35dd275a11baae2df14cadf3f67eedcd453d3
                                 <?php
                                 $sql_size = "SELECT * FROM tbl_product where category != 4 ";
                                 $result_size = $conn->query($sql_size);
@@ -133,7 +151,7 @@
                             <input id="pattern_img" type="hidden" name="pattern_img"></input>
                             <img id="pattern_img_show" class="rounded-lg" style="width:50%;height:auto;padding:0px 50px 0px 50px" src="" />
                         </div>
-                        <!-- <div class="col-6">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="img">รูปภาพสินค้า</label>
                                 <div class="input-group">
@@ -143,7 +161,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
 
                     </div>
                     <div class="row mt-4 d-flex justify-content-center">
