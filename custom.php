@@ -29,25 +29,7 @@
                     <div class="row mt-4 d-flex">
                         <div class="col-6 d-none">
                             <div class="form-group">
-<<<<<<< HEAD
                                 <label for="name">เลือกทรงตะกร้า</label>
-=======
-                                <label for="name">ชื่อสินค้า</label>
-                                <input type="text" name="name" class="form-control" id="name" value="สินค้าแบบกำหนดรูปแบบเอง" placeholder="ชื่อสินค้า">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="qty">จำนวนสินค้า</label>
-                                <input type="text" name="qty" class="form-control" id="qty" placeholder="จำนวนสินค้า">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-4 d-flex justify-content-center">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="color">สีของตะกร้า</label>
->>>>>>> 5dc35dd275a11baae2df14cadf3f67eedcd453d3
                                 <?php
                                 $sql_size = "SELECT * FROM tbl_product where category != 4 ";
                                 $result_size = $conn->query($sql_size);

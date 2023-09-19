@@ -123,18 +123,12 @@ $result = $conn->query($sql);
 <script type="text/javascript">
   $(document).ready(function() {
     //ถ้าปุ่มเพิ่มสินค้าโดนคลิก
-<<<<<<< HEAD
     var queryParams = getQueryParameters();
     $('#add-item-custom').click(function() {
 
       window.location.href = "custom.php?id="+queryParams.id;
     });
 
-=======
-    // if(parseInt(('#qtyCount').text())<=0){
-    //   $('add-item').prop("disabled", true);
-    // }
->>>>>>> 5dc35dd275a11baae2df14cadf3f67eedcd453d3
     $('#add-item').click(function() {
       var qtyCount = parseInt($("#qtyCount").text());
       if (parseInt($('#product_qty').val()) > qtyCount) {
