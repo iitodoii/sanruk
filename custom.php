@@ -29,32 +29,20 @@
                     <div class="row mt-4 d-flex justify-content-center">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="name">ชื่อสินค้า</label>
-                                <input type="text" name="name" class="form-control" id="name" placeholder="ชื่อสินค้า">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="qty">จำนวนสินค้า</label>
-                                <input type="text" name="qty" class="form-control" id="qty" placeholder="จำนวนสินค้า">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-4 d-flex justify-content-center">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="color">สีของตะกร้า</label>
+                                <label for="name">เลือกทรงตะกร้า</label>
                                 <?php
-                                $sql_color = "SELECT * FROM tbl_m_color";
-                                $result_color = $conn->query($sql_color);
-                                echo "<select name='color' id='color' class='form-control'>";
-                                if ($result_color->num_rows > 0) {
-                                    while ($row = $result_color->fetch_assoc()) {
+                                $sql_size = "SELECT * FROM tbl_product where category != 4 ";
+                                $result_size = $conn->query($sql_size);
+                                echo "<select name='name' id='name' class='form-control'>";
+                                if ($result_size->num_rows > 0) {
+                                    while ($row = $result_size->fetch_assoc()) {
                                         echo "<option value='" . $row['id'] . "'>" . $row['name'] . " (" . $row['price'] . "฿) </option>";
                                     }
                                 }
                                 echo "</select>";
                                 ?>
+                                <!-- <input type="text" name="name" class="form-control" id="name" placeholder="เลือกทรงตะกร้า"> -->
+
                             </div>
                         </div>
                         <div class="col-6">
@@ -73,7 +61,16 @@
                                 ?>
                             </div>
                         </div>
+                        <div class="col-6 d-none">
+                            <div class="form-group">
+                                <label for="qty">จำนวนสินค้า</label>
+                                <input type="text" name="qty" class="form-control" id="qty" value=1 placeholder="จำนวนสินค้า">
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- <div class="row mt-4 d-flex justify-content-center">
+                    </div> -->
                     <div class="row mt-4">
                         <div class="col-6">
                             <div class="row">
@@ -86,6 +83,24 @@
                                         echo "<select name='material' id='material' class='form-control'>";
                                         if ($result_material->num_rows > 0) {
                                             while ($row = $result_material->fetch_assoc()) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['name'] . " (" . $row['price'] . "฿) </option>";
+                                            }
+                                        }
+                                        echo "</select>";
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="color">สีของตะกร้า</label>
+                                        <?php
+                                        $sql_color = "SELECT * FROM tbl_m_color";
+                                        $result_color = $conn->query($sql_color);
+                                        echo "<select name='color' id='color' class='form-control'>";
+                                        if ($result_color->num_rows > 0) {
+                                            while ($row = $result_color->fetch_assoc()) {
                                                 echo "<option value='" . $row['id'] . "'>" . $row['name'] . " (" . $row['price'] . "฿) </option>";
                                             }
                                         }
@@ -205,6 +220,8 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        var queryParams = getQueryParameters();
+        $('#name').val(queryParams.id);
         bsCustomFileInput.init();
         //ส่วนของตาราง ทำให้ตารางสวยขึ้น
         var table = $('#summary').DataTable({
@@ -312,6 +329,7 @@
 
     function onchangeEvent() {
         $('#pattern_img_show').hide();
+        $('#price').val(calculatePrice());
         $('#qty').on('change', function() {
             $('#price').val(calculatePrice());
         });
@@ -358,11 +376,38 @@
         const sizeArray = size.match(/\d+/g);
         let size_price = sizeArray[0];
 
+        const product = $("#name option:selected").text();
+        const productArray = product.match(/\d+/g);
+        let product_price = productArray[0];
+
         const material = $("#material option:selected").text();
         const materialArray = material.match(/\d+/g);
         let material_price = materialArray[0];
-        $('#priceTotal').val((parseFloat(color_price) + parseFloat(size_price) + parseFloat(material_price)) * $('#qty').val())
-        return (parseFloat(color_price) + parseFloat(size_price) + parseFloat(material_price));
+        $('#priceTotal').val((parseFloat(product_price)+parseFloat(color_price) + parseFloat(size_price) + parseFloat(material_price)) * $('#qty').val())
+        return (parseFloat(color_price) + parseFloat(size_price) + parseFloat(material_price) + parseFloat(product_price));
+    }
+
+    function getQueryParameters() {
+        var queryString = window.location.search;
+        var params = {};
+
+        // Remove the leading '?' character
+        queryString = queryString.slice(1);
+
+        // Split the query string into an array of key-value pairs
+        var pairs = queryString.split('&');
+
+        // Iterate through each key-value pair
+        for (var i = 0; i < pairs.length; i++) {
+            var pair = pairs[i].split('=');
+            var key = decodeURIComponent(pair[0]);
+            var value = decodeURIComponent(pair[1] || '');
+
+            // Store the key-value pair in the params object
+            params[key] = value;
+        }
+
+        return params;
     }
 </script>
 <?php include '_footer.php' ?>

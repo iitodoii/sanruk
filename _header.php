@@ -382,7 +382,7 @@ if (isset($_SESSION["user_id"])) {
 
             function _chkLogin(formData) {
                 $.ajax({
-                    url: '_chkLogin.User.php',
+                    url: '_chkLogin_User.php',
                     type: 'POST',
                     data: formData,
                     cache: false,

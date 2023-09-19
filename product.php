@@ -67,7 +67,8 @@ $result = $conn->query($sql);
                           <button class="btn btn-outline-success" type="button" onclick="increase()">+</button>
                         </div>
                       </div>
-                      <p>มีสินค้าทั้งหมด <?php //echo $row["qty"] . " " . $row["unit"] ?></p>
+                      <p>มีสินค้าทั้งหมด <?php //echo $row["qty"] . " " . $row["unit"] 
+                                          ?></p>
                     </div>
                   </div>
 
@@ -77,12 +78,17 @@ $result = $conn->query($sql);
                       ซื้อสินค้าเลย
                     </a>
                   </div> -->
-                  
+
                   <div class="mt-4">
                     <a id="add-item" class="btn btn-lg rounded-lg" style="background-color:#ff9d47">
                       <!-- <i class="background-image:url('../dist/img/Shopee-Logo-Transparent-Background.png')"></i> -->
                       <!-- <img src="dist/img/Shopee-Logo-Transparent-Background.png" style="height:5vh;width:auto;" alt="Product Image"> -->
                       เพิ่มสินค้าลงตะกร้า
+                    </a>
+                    <a id="add-item-custom" class="btn btn-lg rounded-lg" style="background-color:#ff9d47">
+                      <!-- <i class="background-image:url('../dist/img/Shopee-Logo-Transparent-Background.png')"></i> -->
+                      <!-- <img src="dist/img/Shopee-Logo-Transparent-Background.png" style="height:5vh;width:auto;" alt="Product Image"> -->
+                      เพิ่มสินค้าลงแบบกำหนดเอง
                     </a>
                   </div>
 
@@ -117,6 +123,12 @@ $result = $conn->query($sql);
 <script type="text/javascript">
   $(document).ready(function() {
     //ถ้าปุ่มเพิ่มสินค้าโดนคลิก
+    var queryParams = getQueryParameters();
+    $('#add-item-custom').click(function() {
+
+      window.location.href = "custom.php?id="+queryParams.id;
+    });
+
     $('#add-item').click(function() {
 
       $.ajax({
@@ -153,5 +165,28 @@ $result = $conn->query($sql);
       });
     });
   });
+
+  function getQueryParameters() {
+    var queryString = window.location.search;
+    var params = {};
+
+    // Remove the leading '?' character
+    queryString = queryString.slice(1);
+
+    // Split the query string into an array of key-value pairs
+    var pairs = queryString.split('&');
+
+    // Iterate through each key-value pair
+    for (var i = 0; i < pairs.length; i++) {
+      var pair = pairs[i].split('=');
+      var key = decodeURIComponent(pair[0]);
+      var value = decodeURIComponent(pair[1] || '');
+
+      // Store the key-value pair in the params object
+      params[key] = value;
+    }
+
+    return params;
+  }
 </script>
 <?php include '_footer.php' ?>
